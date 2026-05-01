@@ -103,3 +103,29 @@ input[type="text"] {
 
 .hidden { display: none; }
 .error-text { color: #ff7675; font-size: 0.9rem; margin-top: 15px; }
+/* Aturan Logo untuk Semua Layar */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.img-logo {
+    width: 100px; /* Lebar logo di layar komputer */
+    height: auto; /* Agar tetap proporsional, tidak penyok */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Aturan Khusus untuk HP (Media Query) */
+@media screen and (max-width: 600px) {
+    .img-logo {
+        width: 70px; /* Lebar logo lebih kecil saat dibuka di HP */
+    }
+    
+    .glass-card {
+        padding: 20px;
+        width: 90%;
+    }
+}
