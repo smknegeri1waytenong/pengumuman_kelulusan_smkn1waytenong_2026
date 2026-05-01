@@ -49,16 +49,18 @@
             </div>
         </div>
 
-        <!-- Input Section (Hidden) -->
-        <div id="download-section" class="hidden">
-            <div class="status-badge">SISTEM AKTIF</div>
-            <p>Masukkan NISN resmi Anda untuk verifikasi data.</p>
-            <div class="input-group">
-                <input type="text" id="nisnInput" placeholder="Masukkan 10 Digit NISN" maxlength="10">
-                <button onclick="cekLulus()" class="btn-glow">UNDUH SKL</button>
-            </div>
-            <p id="errorMsg" class="error-text hidden">⚠️ NISN tidak terdaftar. Hubungi Admin Sekolah.</p>
+        <!-- Bagian Input NISN -->
+<div id="download-section" class="hidden">
+    <div id="result-container">
+        <p>Masukkan NISN resmi Anda untuk verifikasi data:</p>
+        <div class="input-group">
+            <input type="text" id="nisnInput" placeholder="Contoh: 0012345678" maxlength="10">
+            <!-- Tombol pertama: Cek Kelulusan -->
+            <button id="mainBtn" onclick="cekKelulusan()" class="btn-glow">CEK KELULUSAN</button>
         </div>
+    </div>
+    <p id="errorMsg" class="error-text hidden">⚠️ NISN tidak terdaftar. Hubungi Admin Sekolah.</p>
+</div>
     </div>
 
     <script src="script.js"></script>
