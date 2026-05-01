@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal SKL Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Decor -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+
+    <div class="glass-card">
+        <div class="logo">🎓</div>
+        <h2>PENGUMUMAN KELULUSAN</h2>
+        <div class="separator"></div>
+
+        <!-- Stopwatch Style Timer -->
+        <div id="timer-wrapper">
+            <p class="status-text">SISTEM AKAN TERBUKA DALAM</p>
+            <div class="stopwatch">
+                <div class="unit">
+                    <span id="days">00</span>
+                    <label>HARI</label>
+                </div>
+                <div class="colon">:</div>
+                <div class="unit">
+                    <span id="hours">00</span>
+                    <label>JAM</label>
+                </div>
+                <div class="colon">:</div>
+                <div class="unit">
+                    <span id="minutes">00</span>
+                    <label>MENIT</label>
+                </div>
+                <div class="colon">:</div>
+                <div class="unit">
+                    <span id="seconds">00</span>
+                    <label>DETIK</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Section (Hidden) -->
+        <div id="download-section" class="hidden">
+            <div class="status-badge">SISTEM AKTIF</div>
+            <p>Masukkan NISN resmi Anda untuk verifikasi data.</p>
+            <div class="input-group">
+                <input type="text" id="nisnInput" placeholder="Masukkan 10 Digit NISN" maxlength="10">
+                <button onclick="cekLulus()" class="btn-glow">UNDUH SKL</button>
+            </div>
+            <p id="errorMsg" class="error-text hidden">⚠️ NISN tidak terdaftar. Hubungi Admin Sekolah.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
