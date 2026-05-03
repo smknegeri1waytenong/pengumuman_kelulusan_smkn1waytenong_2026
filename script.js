@@ -1,5 +1,5 @@
 // ATUR TANGGAL DISINI
-const targetDate = new Date("May 3, 2026 22:32:00").getTime();
+const targetDate = new Date("May 3, 2026 22:33:00").getTime();
 
 const updateTimer = () => {
     const now = new Date().getTime();
