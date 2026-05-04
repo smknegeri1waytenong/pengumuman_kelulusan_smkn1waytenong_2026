@@ -253,7 +253,7 @@ function cekKelulusan() {
 
 function prosesDownload(file) {
     const link = document.createElement('a');
-    link.href = "files/" + file;
+    link.href = file;
     link.download = file;
     document.body.appendChild(link);
     link.click();
