@@ -252,9 +252,12 @@ function cekKelulusan() {
 }
 
 function prosesDownload(file) {
+    // Gunakan URL absolut agar browser tahu persis letak filenya
+    const baseUrl = window.location.origin + window.location.pathname.replace('index.html', '');
     const link = document.createElement('a');
-    link.href = file;
+    link.href = baseUrl + file;
     link.download = file;
+    link.target = "_blank"; // Membuka di tab baru jika download gagal otomatis
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
