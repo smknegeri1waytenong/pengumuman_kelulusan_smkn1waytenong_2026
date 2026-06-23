@@ -222,42 +222,104 @@ const dataSiswa = {
     "0087385908": ["SHELLA NOVIA AMANDA", "SKL_0087385908.pdf"]
 };
 function cekKelulusan() {
-    const input = document.getElementById("nisnInput").value;
+    const input = document.getElementById("nisnInput").value.trim();
     const resultContainer = document.getElementById("result-container");
     const errorMsg = document.getElementById("errorMsg");
+
+    // Sembunyikan pesan error bawaan jika ada
+    if (errorMsg) errorMsg.classList.add("hidden");
 
     if (dataSiswa[input]) {
         const namaSiswa = dataSiswa[input][0];
         const namaFile = dataSiswa[input][1];
 
-        errorMsg.classList.add("hidden");
-        
-        // Mengubah isi container secara dinamis
+        // TAMPILAN JIKA LULUS (Khas Hijau SNBT)
         resultContainer.innerHTML = `
-            <div class="result-card">
-                <div class="badge-lulus">LULUS</div>
-                <h3 class="student-name">${namaSiswa}</h3>
-                <p class="congrats-text">Selamat! Anda dinyatakan lulus. Klik tombol di bawah untuk mengunduh dokumen SKL.</p>
+            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <!-- Header Hijau -->
+                <div style="background-color: #2e7d32; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 16px;">
+                    PENGUMUMAN HASIL SELEKSI SPMB 2026
+                </div>
                 
-                <!-- Tombol berubah menjadi UNDUH SKL -->
-                <button onclick="prosesDownload('${namaFile}')" class="btn-glow">UNDUH SKL (PDF)</button>
+                <!-- Isi Konten -->
+                <div style="background-color: #f4faf6; padding: 25px; text-align: center; color: #333;">
+                    <p style="font-size: 15px; margin-bottom: 5px;">NOMOR PESERTA / NISN: <strong>${input}</strong></p>
+                    <h3 style="font-size: 20px; color: #1b5e20; margin-top: 5px; margin-bottom: 20px; text-transform: uppercase;">${namaSiswa}</h3>
+                    
+                    <div style="border-top: 2px solid #2e7d32; border-bottom: 2px solid #2e7d32; padding: 15px 0; margin: 20px 0;">
+                        <p style="font-size: 18px; font-weight: bold; color: #2e7d32; margin: 0; letter-spacing: 0.5px;">
+                            SELAMAT! ANDA DINYATAKAN LULUS
+                        </p>
+                        <p style="font-size: 14px; color: #4a5a4a; margin: 5px 0 0 0;">
+                            Siswa SMKN 1 Way Tenong Tahun Pelajaran 2025/2026
+                        </p>
+                    </div>
+
+                    <p style="font-size: 13px; color: #666; margin-bottom: 20px;">
+                        Silakan unduh Surat Keterangan Lulus (SKL) resmi Anda melalui tombol di bawah ini:
+                    </p>
+
+                    <!-- Tombol Cetak / Unduh -->
+                    <button onclick="prosesDownload('${namaFile}')" style="background-color: #2e7d32; color: white; border: none; padding: 12px 25px; font-size: 14px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                        UNDUH DETAIL KELULUSAN (PDF)
+                    </button>
+                    
+                    <br><br>
+                    <button onclick="location.reload()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 8px 15px; font-size: 12px; border-radius: 4px; cursor: pointer;">
+                        Kembali / Cek Nomor Lain
+                    </button>
+                </div>
                 
-                <br>
-                <button onclick="location.reload()" class="btn-back">Cek NISN Lain</button>
+                <!-- Footer -->
+                <div style="background-color: #e8f5e9; color: #2e7d32; padding: 10px; text-align: center; font-size: 11px; border-top: 1px solid #cee9db;">
+                    © 2026 Tim SIM SPMB SMKN 1 Way Tenong
+                </div>
             </div>
         `;
     } else {
-        errorMsg.classList.remove("hidden");
+        // TAMPILAN JIKA TIDAK LULUS / DATA TIDAK DITEMUKAN (Khas Merah SNBT)
+        resultContainer.innerHTML = `
+            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <!-- Header Merah -->
+                <div style="background-color: #c62828; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 16px;">
+                    PENGUMUMAN HASIL SELEKSI SPMB 2026
+                </div>
+                
+                <!-- Isi Konten -->
+                <div style="background-color: #fff5f5; padding: 25px; text-align: center; color: #333;">
+                    <p style="font-size: 15px; margin-bottom: 5px;">NOMOR PESERTA / NISN: <strong>${input}</strong></p>
+                    <p style="font-size: 13px; color: #666; margin-bottom: 20px;">Data tidak ditemukan atau status seleksi belum diperbarui.</p>
+                    
+                    <div style="border-top: 2px solid #c62828; border-bottom: 2px solid #c62828; padding: 15px 0; margin: 20px 0;">
+                        <p style="font-size: 16px; font-weight: bold; color: #c62828; margin: 0;">
+                            MOHON MAAF, DATA TIDAK DITEMUKAN
+                        </p>
+                        <p style="font-size: 13px; color: #7f4f4f; margin: 5px 0 0 0;">
+                            Periksa kembali nomor NISN yang Anda masukkan dan pastikan tidak ada salah ketik.
+                        </p>
+                    </div>
+
+                    <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 10px 20px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px;">
+                        Coba Lagi
+                    </button>
+                </div>
+                
+                <!-- Footer -->
+                <div style="background-color: #ffebee; color: #c62828; padding: 10px; text-align: center; font-size: 11px; border-top: 1px solid #f9d5d5;">
+                    © 2026 Tim SIM SPMB SMKN 1 Way Tenong
+                </div>
+            </div>
+        `;
     }
 }
 
+// Fungsi download menggunakan URL absolut agar bypass folder "files/"
 function prosesDownload(file) {
-    // Gunakan URL absolut agar browser tahu persis letak filenya
     const baseUrl = window.location.origin + window.location.pathname.replace('index.html', '');
     const link = document.createElement('a');
     link.href = baseUrl + file;
     link.download = file;
-    link.target = "_blank"; // Membuka di tab baru jika download gagal otomatis
+    link.target = "_blank";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
