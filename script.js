@@ -1,32 +1,4 @@
-// ATUR TANGGAL DISINI
-const targetDate = new Date("June 22 2026 17:00:00").getTime();
-
-const updateTimer = () => {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-        clearInterval(timerInterval);
-        document.getElementById("timer-wrapper").classList.add("hidden");
-        document.getElementById("download-section").classList.remove("hidden");
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerText = days.toString().padStart(2, '0');
-    document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-    document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-    document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-};
-
-const timerInterval = setInterval(updateTimer, 1000);
-updateTimer(); // Jalankan langsung saat load
-
-// Data Otomatis dari file CODING SKL.xlsx
+// Data Otomatis SPMB SMKN 1 Way Tenong 2026/2027
 const dataSiswa = {
     "0078010691": ["AGUNG SETIAWAN", "SKL_0078010691.pdf"],
     "0073404632": ["ARIPIN", "SKL_0073404632.pdf"],
@@ -221,15 +193,16 @@ const dataSiswa = {
     "0062640964": ["SELLA FRELISIYA", "SKL_0062640964.pdf"],
     "0087385908": ["SHELLA NOVIA AMANDA", "SKL_0087385908.pdf"]
 };
+
 function cekKelulusan() {
-    // Trik aman: Mencari input berdasarkan ID 'nisnInput', jika tidak ada cari yang tipe 'text'
+    // Mencari kolom input secara fleksibel (berdasarkan ID atau Tipe)
     let inputElement = document.getElementById("nisnInput");
     if (!inputElement) {
         inputElement = document.querySelector("input[type='text']");
     }
 
     if (!inputElement) {
-        alert("Elemen input tidak ditemukan di HTML!");
+        alert("Elemen kolom pencarian tidak ditemukan di HTML!");
         return;
     }
 
@@ -237,12 +210,13 @@ function cekKelulusan() {
     const resultContainer = document.getElementById("result-container");
     const errorMsg = document.getElementById("errorMsg");
 
+    // Sembunyikan pesan error bawaan
     if (errorMsg) errorMsg.classList.add("hidden");
 
     if (dataSiswa[input]) {
         const namaSiswa = dataSiswa[input][0];
 
-        // TAMPILAN JIKA LULUS SELEKSI (Khas Hijau SNBT)
+        // KARTU HIJAU JIKALAU LULUS (ALA SELEKSI NASIONAL)
         resultContainer.innerHTML = `
             <div style="max-width: 600px; margin: 20px auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
                 <div style="background-color: #2e7d32; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
@@ -268,7 +242,7 @@ function cekKelulusan() {
                         Selamat bergabung di keluarga besar SMKN 1 Way Tenong. Silakan klik tombol di bawah ini untuk mengisi formulir daftar ulang resmi melalui Google Form:
                     </p>
 
-                    <button onclick="bukaDaftarUlang()" style="background-color: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 320px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px; display: inline-block; margin: 0 auto;">
+                    <button onclick="bukaDaftarUlang()" style="background-color: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 320px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px; display: inline-block;">
                         KLIK DISINI UNTUK DAFTAR ULANG
                     </button>
                     
@@ -277,14 +251,13 @@ function cekKelulusan() {
                         Kembali / Cek Nomor Lain
                     </button>
                 </div>
-                
                 <div style="background-color: #e8f5e9; color: #2e7d32; padding: 12px; text-align: center; font-size: 11px; border-top: 1px solid #cee9db; font-weight: 500;">
                     © 2026 Panitia SPMB SMKN 1 Way Tenong
                 </div>
             </div>
         `;
     } else {
-        // TAMPILAN JIKA DATA TIDAK ADA (Khas Merah SNBT)
+        // KARTU MERAH JIKALAU DATA TIDAK DIKETAHUI
         resultContainer.innerHTML = `
             <div style="max-width: 600px; margin: 20px auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
                 <div style="background-color: #c62828; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
@@ -303,14 +276,13 @@ function cekKelulusan() {
                     </div>
                     
                     <p style="font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5;">
-                        Nomor peserta yang Anda masukkan tidak terdaftar dalam sistem SPMB atau status kelulusan belum diperbarui oleh panitia. Pastikan nomor yang dimasukkan sudah benar.
+                        Nomor peserta tidak terdaftar dalam sistem penerimaan murid baru atau status Anda belum diperbarui oleh panitia. Pastikan tidak ada kesalahan ketik.
                     </p>
 
-                    <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 10px 20px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">
+                    <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 10px 20px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px;">
                         Coba Lagi
                     </button>
                 </div>
-                
                 <div style="background-color: #ffebee; color: #c62828; padding: 12px; text-align: center; font-size: 11px; border-top: 1px solid #f9d5d5; font-weight: 500;">
                     © 2026 Panitia SPMB SMKN 1 Way Tenong
                 </div>
@@ -318,3 +290,7 @@ function cekKelulusan() {
         `;
     }
 }
+
+// Pengalihan Alamat Langsung Ke Formulir Pendaftaran Ulang Google Form
+function bukaDaftarUlang() {
+    const linkGoogleForm = "https
