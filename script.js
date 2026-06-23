@@ -202,89 +202,89 @@ function cekHasilSeleksiSpmb() {
         const namaSiswa = dataSiswaSpmb[inputVal][0];
         const jurusanSiswa = dataSiswaSpmb[inputVal][1];
 
-        // JAMINAN TOTAL: Ganti seluruh isi <body> agar semua judul lama & menu atas musnah tanpa sisa
-        // Menambahkan properti CSS langsung agar halaman bisa di-scroll dengan lancar dan fleksibel
-        document.body.innerHTML = `
-            <div style="width: 100%; min-height: 100vh; padding: 40px 20px; box-sizing: border-box; display: flex; justify-content: center; align-items: flex-start; overflow-y: auto; background-color: #0f172a;">
-                <div style="width: 100%; max-width: 600px; margin: 0 auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); background-color: #f4faf6; text-align: left;">
+        // MENCARI PEMBUNGKUS UTAMA WEBSITE ANDA
+        // Mencari element dengan class 'container' atau elemen pembungkus luar .card
+        const targetContainer = document.querySelector(".container") || document.body;
+
+        // GANTI TOTAL ISI LAYAR: Menghapus Judul Utama, Input Field, dan Tombol Cek di atasnya
+        targetContainer.innerHTML = `
+            <div id="result-container" style="width: 100%; text-align: left; display: flex; justify-content: center; padding: 20px 0;">
+                <div style="width: 100%; max-width: 600px; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); background-color: #f4faf6;">
                     
-                    <!-- Header Hijau Resmi -->
-                    <div style="background-color: #2e7d32; color: white; padding: 20px 15px; text-align: center; font-weight: bold; font-size: 16px; line-height: 1.4;">
+                    <div style="background-color: #2e7d32; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
                         PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
                         SMKN 1 WAY TENONG<br>
                         Tahun Ajaran 2026/2027
                     </div>
                     
-                    <!-- Isi Konten Kelulusan -->
-                    <div style="padding: 30px 25px; text-align: center; color: #333;">
-                        <p style="font-size: 13px; margin-bottom: 4px; color: #666; text-transform: uppercase; font-weight: 600;">NOMOR PESERTA / NISN</p>
-                        <p style="font-size: 17px; font-weight: bold; margin-top: 0; margin-bottom: 18px; color: #111; letter-spacing: 0.5px;">${inputVal}</p>
+                    <div style="padding: 25px; text-align: center; color: #333;">
+                        <p style="font-size: 13px; margin-bottom: 3px; color: #666; text-transform: uppercase; font-weight: 600;">NOMOR PESERTA / NISN</p>
+                        <p style="font-size: 16px; font-weight: bold; margin-top: 0; margin-bottom: 15px; color: #111; letter-spacing: 0.5px;">${inputVal}</p>
                         
-                        <p style="font-size: 13px; margin-bottom: 4px; color: #666; text-transform: uppercase; font-weight: 600;">NAMA CALON SISWA</p>
-                        <h3 style="font-size: 21px; color: #111; margin-top: 0; margin-bottom: 22px; text-transform: uppercase; font-weight: 700;">${namaSiswa}</h3>
+                        <p style="font-size: 13px; margin-bottom: 3px; color: #666; text-transform: uppercase; font-weight: 600;">NAMA CALON SISWA</p>
+                        <h3 style="font-size: 20px; color: #111; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; font-weight: 700;">${namaSiswa}</h3>
                         
-                        <div style="border-top: 2px solid #2e7d32; border-bottom: 2px solid #2e7d32; padding: 20px 10px; margin: 22px 0; background-color: #e8f5e9;">
-                            <p style="font-size: 18px; font-weight: bold; color: #2e7d32; margin: 0 0 10px 0; letter-spacing: 0.5px;">
+                        <div style="border-top: 2px solid #2e7d32; border-bottom: 2px solid #2e7d32; padding: 18px 0; margin: 20px 0; background-color: #e8f5e9;">
+                            <p style="font-size: 17px; font-weight: bold; color: #2e7d32; margin: 0 0 8px 0; letter-spacing: 0.5px;">
                                 SELAMAT! ANDA DINYATAKAN LULUS SELEKSI
                             </p>
-                            <p style="font-size: 14px; color: #444; margin: 0; line-height: 1.5;">
+                            <p style="font-size: 14px; color: #444; margin: 0; line-height: 1.4;">
                                 Diterima pada Program Keahlian:<br>
-                                <strong style="color: #1b5e20; font-size: 17px; display: inline-block; margin-top: 6px; letter-spacing: 0.3px;">${jurusanSiswa}</strong>
+                                <strong style="color: #1b5e20; font-size: 16px; display: inline-block; margin-top: 6px; font-weight: bold;">${jurusanSiswa}</strong>
                             </p>
                         </div>
 
-                        <p style="font-size: 13px; color: #555; margin-bottom: 25px; line-height: 1.6;">
+                        <p style="font-size: 13px; color: #555; margin-bottom: 25px; line-height: 1.5;">
                             Silakan lakukan tahapan pendaftaran ulang untuk mengunci kuota kursi Anda melalui tautan formulir resmi di bawah ini:
                         </p>
 
-                        <!-- Tombol Google Form -->
-                        <button onclick="bukaDaftarUlangForm()" style="background-color: #2e7d32; color: white; border: none; padding: 15px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 340px; box-shadow: 0 4px 8px rgba(46,125,50,0.3); text-transform: uppercase; letter-spacing: 0.5px;">
+                        <button onclick="bukaDaftarUlangForm()" style="background-color: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 340px; box-shadow: 0 3px 6px rgba(46,125,50,0.3); text-transform: uppercase;">
                             KLIK DISINI UNTUK DAFTAR ULANG
                         </button>
                         
                         <br><br><br>
-                        <!-- Tombol Reset / Kembali Semula -->
-                        <button onclick="location.reload()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 10px 20px; font-size: 13px; border-radius: 4px; cursor: pointer; font-weight: bold; text-transform: uppercase;">
+                        <button onclick="location.reload()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 8px 18px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">
                             Kembali / Cek Nomor Lain
                         </button>
                     </div>
 
-                    <!-- Footer Kartu -->
-                    <div style="background-color: #e8f5e9; color: #2e7d32; padding: 14px; text-align: center; font-size: 12px; border-top: 1px solid #cee9db; font-weight: 500;">
+                    <div style="background-color: #e8f5e9; color: #2e7d32; padding: 12px; text-align: center; font-size: 11px; border-top: 1px solid #cee9db; font-weight: 500;">
                         © 2026 Panitia SPMB SMKN 1 Way Tenong
                     </div>
                 </div>
             </div>
         `;
     } else {
-        // TAMPILAN JIKA DATA TIDAK ADA (Mengganti body secara total juga)
-        document.body.innerHTML = `
-            <div style="width: 100%; min-height: 100vh; padding: 40px 20px; box-sizing: border-box; display: flex; justify-content: center; align-items: flex-start; overflow-y: auto; background-color: #0f172a;">
-                <div style="width: 100%; max-width: 600px; margin: 0 auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); background-color: #fff5f5; text-align: left;">
-                    <div style="background-color: #c62828; color: white; padding: 20px 15px; text-align: center; font-weight: bold; font-size: 16px; line-height: 1.4;">
+        // JIKA DATA SISWA TIDAK TERDAFTAR (Bagian atas juga lenyap total)
+        const targetContainer = document.querySelector(".container") || document.body;
+        targetContainer.innerHTML = `
+            <div id="result-container" style="width: 100%; text-align: left; display: flex; justify-content: center; padding: 20px 0;">
+                <div style="width: 100%; max-width: 600px; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); background-color: #fff5f5;">
+                    
+                    <div style="background-color: #c62828; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
                         PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
                         SMKN 1 WAY TENONG<br>
                         Tahun Ajaran 2026/2027
                     </div>
                     
-                    <div style="padding: 30px 25px; text-align: center; color: #333;">
-                        <p style="font-size: 15px; margin-bottom: 6px;">NOMOR PESERTA / NISN: <strong>${inputVal}</strong></p>
+                    <div style="padding: 25px; text-align: center; color: #333;">
+                        <p style="font-size: 15px; margin-bottom: 5px;">NOMOR PESERTA / NISN: <strong>${inputVal}</strong></p>
                         
-                        <div style="border-top: 2px solid #c62828; border-bottom: 2px solid #c62828; padding: 20px 10px; margin: 22px 0; background-color: #ffebee;">
-                            <p style="font-size: 17px; font-weight: bold; color: #c62828; margin: 0;">
+                        <div style="border-top: 2px solid #c62828; border-bottom: 2px solid #c62828; padding: 18px 0; margin: 20px 0; background-color: #ffebee;">
+                            <p style="font-size: 16px; font-weight: bold; color: #c62828; margin: 0;">
                                 MOHON MAAF, DATA TIDAK DITEMUKAN
                             </p>
                         </div>
                         
-                        <p style="font-size: 13px; color: #666; margin-bottom: 25px; line-height: 1.6;">
+                        <p style="font-size: 13px; color: #666; margin-bottom: 25px; line-height: 1.5;">
                             Nomor peserta tidak terdaftar atau status Anda belum diperbarui oleh panitia. Pastikan tidak ada kesalahan ketik nomor NISN Anda.
                         </p>
 
-                        <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 12px 25px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px; box-shadow: 0 3px 6px rgba(198,40,40,0.2); text-transform: uppercase;">
+                        <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 11px 22px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px;">
                             Coba Lagi / Kembali
                         </button>
                     </div>
-                    <div style="background-color: #ffebee; color: #c62828; padding: 14px; text-align: center; font-size: 12px; border-top: 1px solid #f9d5d5; font-weight: 500;">
+                    <div style="background-color: #ffebee; color: #c62828; padding: 12px; text-align: center; font-size: 11px; border-top: 1px solid #f9d5d5; font-weight: 500;">
                         © 2026 Panitia SPMB SMKN 1 Way Tenong
                     </div>
                 </div>
