@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPMB SMK N 1 WAY TENONG</title>
-    <link rel="stylesheet" href="style.css?v=1.6">
+    <title>SPMB SMKN 1 WAY TENONG</title>
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
     <div class="container">
-        <div class="card" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <div class="card" style="text-align: center;">
             
-            <img src="logo_sekolah.png" alt="Logo SMKN 1 Way Tenong" class="logo" style="width: 100px; height: auto; display: block; margin: 0 auto 20px auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));">
+            <img src="logo_sekolah.png" alt="Logo SMKN 1 Way Tenong" class="logo" style="width: 100px; height: auto; display: block; margin: 0 auto 20px auto;">
 
-            <h2 style="margin: 5px 0;">PENGUMUMAN SISTEM PENERIMAAN MURID BARU</h2>
-            <h2 style="margin: 5px 0;">(SPMB)</h2>
-            <h3 style="margin: 5px 0;">SMKN 1 WAY TENONG</h3>
-            <p class="ta" style="margin: 5px 0 20px 0;">Tahun Ajaran 2026/2027</p>
+            <h2>PENGUMUMAN SISTEM PENERIMAAN MURID BARU</h2>
+            <h2>(SPMB)</h2>
+            <h3>SMKN 1 WAY TENONG</h3>
+            <p class="ta">Tahun Ajaran 2026/2027</p>
             
             <div class="underline" style="margin: 0 auto 25px auto;"></div>
 
-            <p class="instruction" style="margin-bottom: 15px;">Masukkan NISN resmi Anda untuk verifikasi data:</p>
+            <p class="instruction">Masukkan NISN resmi Anda untuk verifikasi data:</p>
 
-            <input type="text" id="nisnInput" placeholder="Contoh: 0012345678" maxlength="10" style="width: 100%; max-width: 400px; display: block; margin-bottom: 20px;">
+            <input type="text" id="nisnInput" name="nisn" placeholder="Contoh: 0078010691" maxlength="10">
 
-            <button onclick="cekKelulusan()" style="width: 100%; max-width: 400px; display: block; cursor: pointer; font-weight: bold; padding: 14px; text-transform: uppercase;">CEK HASIL SELEKSI</button>
+            <button onclick="if(typeof cekKelulusan === 'function'){ cekKelulusan(); } else if(typeof cek_kelulusan === 'function'){ cek_kelulusan(); } else { alert('Skrip sistem belum termuat sempurna, silakan refresh halaman (Ctrl+F5)'); }" class="btn-glow" style="cursor: pointer; width: 100%; display: block;">
+                CEK HASIL SELEKSI
+            </button>
 
-            <div id="result-container" style="margin-top: 25px; text-align: left; width: 100%;"></div>
+            <div id="result-container" style="margin-top: 25px; text-align: left;"></div>
             
-            <p id="errorMsg" class="error hidden" style="margin-top: 15px;">Data tidak ditemukan, periksa kembali nomor Anda.</p>
+            <p id="errorMsg" class="error hidden">Data tidak ditemukan, periksa kembali nomor Anda.</p>
             
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
