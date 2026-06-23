@@ -205,15 +205,24 @@ function cekHasilSeleksiSpmb() {
         const namaSiswa = dataSiswaSpmb[inputVal][0];
         const jurusanSiswa = dataSiswaSpmb[inputVal][1];
 
+        // TRICK: Menyembunyikan logo, judul utama, input, dan tombol cek di atasnya
+        // Kita sembunyikan semua elemen bawaan di dalam .card kecuali wadah hasil
+        const cardChildren = document.querySelectorAll(".card > *:not(#result-container)");
+        cardChildren.forEach(el => el.style.display = 'none');
+
+        // Membuka penuh area wadah hasil agar memenuhi card
+        resultContainer.style.width = "100%";
+        resultContainer.style.marginTop = "0px";
+
         resultContainer.innerHTML = `
-            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+            <div style="max-width: 600px; margin: 0 auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left; background-color: #f4faf6;">
                 <div style="background-color: #2e7d32; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
                     PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
                     SMKN 1 WAY TENONG<br>
                     Tahun Ajaran 2026/2027
                 </div>
                 
-                <div style="background-color: #f4faf6; padding: 25px; text-align: center; color: #333;">
+                <div style="padding: 25px; text-align: center; color: #333;">
                     <p style="font-size: 13px; margin-bottom: 3px; color: #666; text-transform: uppercase;">NOMOR PESERTA / NISN</p>
                     <p style="font-size: 16px; font-weight: bold; margin-top: 0; margin-bottom: 12px; color: #111;">${inputVal}</p>
                     
@@ -239,7 +248,7 @@ function cekHasilSeleksiSpmb() {
                     </button>
                     
                     <br><br>
-                    <button onclick="location.reload()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 8px 15px; font-size: 12px; border-radius: 4px; cursor: pointer;">
+                    <button onclick="location.reload()" style="background-color: transparent; color: #666; border: 1px solid #ccc; padding: 8px 15px; font-size: 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">
                         Kembali / Cek Nomor Lain
                     </button>
                 </div>
@@ -249,15 +258,22 @@ function cekHasilSeleksiSpmb() {
             </div>
         `;
     } else {
+        // JIKA DATA TIDAK DITEMUKAN, form atas juga disembunyikan agar bersih
+        const cardChildren = document.querySelectorAll(".card > *:not(#result-container)");
+        cardChildren.forEach(el => el.style.display = 'none');
+        
+        resultContainer.style.width = "100%";
+        resultContainer.style.marginTop = "0px";
+
         resultContainer.innerHTML = `
-            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
+            <div style="max-width: 600px; margin: 0 auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left; background-color: #fff5f5;">
                 <div style="background-color: #c62828; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
                     PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
                     SMKN 1 WAY TENONG<br>
                     Tahun Ajaran 2026/2027
                 </div>
                 
-                <div style="background-color: #fff5f5; padding: 25px; text-align: center; color: #333;">
+                <div style="padding: 25px; text-align: center; color: #333;">
                     <p style="font-size: 15px; margin-bottom: 5px;">NOMOR PESERTA / NISN: <strong>${inputVal}</strong></p>
                     
                     <div style="border-top: 2px solid #c62828; border-bottom: 2px solid #c62828; padding: 18px 0; margin: 20px 0; background-color: #ffebee;">
@@ -271,7 +287,7 @@ function cekHasilSeleksiSpmb() {
                     </p>
 
                     <button onclick="location.reload()" style="background-color: #c62828; color: white; border: none; padding: 10px 20px; font-size: 13px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; max-width: 250px;">
-                        Coba Lagi
+                        Coba Lagi / Kembali
                     </button>
                 </div>
                 <div style="background-color: #ffebee; color: #c62828; padding: 12px; text-align: center; font-size: 11px; border-top: 1px solid #f9d5d5; font-weight: 500;">
@@ -280,10 +296,4 @@ function cekHasilSeleksiSpmb() {
             </div>
         `;
     }
-}
-
-function bukaDaftarUlangForm() {
-    // Tautan Google Form pendaftaran ulang Anda
-    const urlForm = "https://forms.gle/ContohLinkGoogleFormDaftarUlangAnda";
-    window.open(urlForm, '_blank');
 }
