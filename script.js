@@ -15,7 +15,7 @@ const dataSiswaSpmb = {
             "0098374732": ["DEWI NURYANI", "Desain Permodelan Busana"],
             "0098442966": ["RISWANDO SAPUTRA", "Teknik Jaringan dan Alat Telekomunikasi"],
             "0098984090": ["M.NABIL RAMADHAN ALV", "Teknik Komputer dan Jaringan"],
-            "01'04506101": ["REVAN ARDIANSYAH", "Teknik Instalasi dan Tenaga Listrik"],
+            "0104506101": ["REVAN ARDIANSYAH", "Teknik Instalasi dan Tenaga Listrik"],
             "0101051210": ["YANIH", "Desain Permodelan dan Informasi Bangunan"],
             "0101182921": ["DIDIN KHALDIYANSYAH", "Teknik Audio Video"],
             "0101426492": ["BIMA ADITIYA PRANATA", "Teknik Komputer dan Jaringan"],
