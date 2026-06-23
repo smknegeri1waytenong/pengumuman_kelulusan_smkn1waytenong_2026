@@ -222,23 +222,33 @@ const dataSiswa = {
     "0087385908": ["SHELLA NOVIA AMANDA", "SKL_0087385908.pdf"]
 };
 function cekKelulusan() {
-    const input = document.getElementById("nisnInput").value.trim();
+    // Trik aman: Mencari input berdasarkan ID 'nisnInput', jika tidak ada cari yang tipe 'text'
+    let inputElement = document.getElementById("nisnInput");
+    if (!inputElement) {
+        inputElement = document.querySelector("input[type='text']");
+    }
+
+    if (!inputElement) {
+        alert("Elemen input tidak ditemukan di HTML!");
+        return;
+    }
+
+    const input = inputElement.value.trim();
     const resultContainer = document.getElementById("result-container");
     const errorMsg = document.getElementById("errorMsg");
 
-    // Sembunyikan pesan error bawaan jika ada
     if (errorMsg) errorMsg.classList.add("hidden");
 
     if (dataSiswa[input]) {
         const namaSiswa = dataSiswa[input][0];
-        const namaFile = dataSiswa[input][1]; // Tetap biarkan untuk parameter jika dibutuhkan nanti
 
         // TAMPILAN JIKA LULUS SELEKSI (Khas Hijau SNBT)
         resultContainer.innerHTML = `
-            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #cee9db; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
                 <div style="background-color: #2e7d32; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
-                    PENGUMUMAN KELULUSAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
-                    SMKN 1 WAY TENONG
+                    PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
+                    SMKN 1 WAY TENONG<br>
+                    Tahun Ajaran 2026/2027
                 </div>
                 
                 <div style="background-color: #f4faf6; padding: 25px; text-align: center; color: #333;">
@@ -258,7 +268,7 @@ function cekKelulusan() {
                         Selamat bergabung di keluarga besar SMKN 1 Way Tenong. Silakan klik tombol di bawah ini untuk mengisi formulir daftar ulang resmi melalui Google Form:
                     </p>
 
-                    <button onclick="bukaDaftarUlang()" style="background-color: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 320px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px;">
+                    <button onclick="bukaDaftarUlang()" style="background-color: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 15px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 320px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); letter-spacing: 0.5px; display: inline-block; margin: 0 auto;">
                         KLIK DISINI UNTUK DAFTAR ULANG
                     </button>
                     
@@ -276,10 +286,11 @@ function cekKelulusan() {
     } else {
         // TAMPILAN JIKA DATA TIDAK ADA (Khas Merah SNBT)
         resultContainer.innerHTML = `
-            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="max-width: 600px; margin: 20px auto; border: 1px solid #f9d5d5; border-radius: 8px; font-family: Arial, sans-serif; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;">
                 <div style="background-color: #c62828; color: white; padding: 18px 15px; text-align: center; font-weight: bold; font-size: 15px; line-height: 1.4;">
-                    PENGUMUMAN KELULUSAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
-                    SMKN 1 WAY TENONG
+                    PENGUMUMAN SISTEM PENERIMAAN MURID BARU (SPMB)<br>
+                    SMKN 1 WAY TENONG<br>
+                    Tahun Ajaran 2026/2027
                 </div>
                 
                 <div style="background-color: #fff5f5; padding: 25px; text-align: center; color: #333;">
@@ -306,12 +317,4 @@ function cekKelulusan() {
             </div>
         `;
     }
-}
-
-// Fungsi Baru untuk Mengarahkan Langsung ke Google Form Daftar Ulang
-function bukaDaftarUlang() {
-    // SILAKAN GANTI LINK DI BAWAH INI DENGAN LINK GOOGLE FORM DAFTAR ULANG ANDA
-    const linkGoogleForm = "https://forms.gle/ContohLinkGoogleFormDaftarUlangAnda"; 
-    
-    window.open(linkGoogleForm, '_blank');
 }
