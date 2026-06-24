@@ -270,7 +270,7 @@ const dataSiswaSpmb = {
             "0119799214": ["DEWI ANGGRAINI", "Desain Permodelan Busana"],
             "0119902198": ["ADELIA RAHMATIKA", "Teknik Komputer dan Jaringan"],
             "0119918028": ["SYAFIA SALSABILA", "Akuntansi dan Keuangan Lembaga"],
-            "01211284474": ["MUSNI LISTIANI", "Teknik Komputer dan Jaringan"],
+            "0121128447": ["MUSNI LISTIANI", "Teknik Komputer dan Jaringan"],
             "0121553203": ["KOMALA RIA", "Teknik Komputer dan Jaringan"],
             "0122453522": ["VIQI ASEP RIANZA", "Teknik Instalasi dan Tenaga Listrik"],
             "0126395386": ["BAYU SUPRIADI", "Teknik Instalasi dan Tenaga Listrik"],
