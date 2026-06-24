@@ -1,7 +1,7 @@
 // Database Otomatis 192 Siswa SMKN 1 Way Tenong 2026/2027
 const dataSiswaSpmb = {
-                        "0000000000": ["RIYAN RADITIYA", "Desain Komunikasi Visual"],
-            "0000000001": ["HERI YUSFARIZAL", "Desain Komunikasi Visual"],
+                             "0112827225": ["RIYAN RADITIYA", "Desain Komunikasi Visual"],
+            "0117100733": ["HERI YUSFARIZAL", "Desain Komunikasi Visual"],
             "0081655778": ["NOVIA ANJANI FEBRIYANA", "Akuntansi dan Keuangan Lembaga"],
             "0083108916": ["AGUS ERWANGI", "Teknik Instalasi dan Tenaga Listrik"],
             "0092796957": ["ALDI RAMADANI", "Teknik Instalasi dan Tenaga Listrik"],
