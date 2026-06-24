@@ -291,7 +291,6 @@ const dataSiswaSpmb = {
             "3107432227": ["KAISA PUTRI", "Desain Permodelan Busana"],
             "3108336802": ["SISKA SAFITRI", "Desain Komunikasi Visual"],
             "3108880342": ["AHMAD SAHRUDIN", "Teknik Instalasi dan Tenaga Listrik"],
-            "31088880342": ["AHMAD SAHRUDIN", "Teknik Instalasi dan Tenaga Listrik"],
             "3110405532": ["NURKHOFIFAH", "Akuntansi dan Keuangan Lembaga"],
             "3110423380": ["AGIS RISQIA RAMADHANI", "Desain Permodelan Busana"],
             "3112006894": ["ANDINI", "Desain Permodelan Busana"],
