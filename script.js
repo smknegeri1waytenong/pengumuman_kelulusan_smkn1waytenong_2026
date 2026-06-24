@@ -35,7 +35,7 @@ const dataSiswaSpmb = {
             "0102579150": ["ADE CANDRA PRATAMA", "Teknik Instalasi dan Tenaga Listrik"],
             "0102638809": ["ANNISA FITRI SEPTIA", "Teknik Komputer dan Jaringan"],
             "0102724485": ["MUHAMMAD FADLI IVANO", "Teknik Jaringan dan Alat Telekomunikasi"],
-            "0102821789": ["ISKANDAR ABDUL ROHMAN", "Teknik Instalasi dan Tenaga Listrik"],
+            "0102821788": ["ISKANDAR ABDUL ROHMAN", "Teknik Instalasi dan Tenaga Listrik"],
             "0102821789": ["MUHAMAD ILHAM ATHORIQ", "Desain Permodelan dan Informasi Bangunan"],
             "0102892471": ["MUHAMMAD REGGY AL KATIRI", "Desain Permodelan dan Informasi Bangunan"],
             "0102913015": ["SELVIYA", "Desain Permodelan Busana"],
