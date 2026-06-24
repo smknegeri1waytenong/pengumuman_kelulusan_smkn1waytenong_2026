@@ -30,7 +30,7 @@ const dataSiswaSpmb = {
             "0102304770": ["PANJI DARMAWANGSA", "Desain Komunikasi Visual"],
             "0102350337": ["LIVVIANA AURA PUTRI", "Akuntansi dan Keuangan Lembaga"],
             "0102451870": ["JOSHUA REYHAND PURBA", "Teknik Komputer dan Jaringan"],
-            "0102517183": ["NONG IIM", "Akuntansi dan Keuangan Lembaga"],
+            "0102517184": ["NONG IIM", "Akuntansi dan Keuangan Lembaga"],
             "0102517183": ["PERDIANSYAH", "Desain Permodelan dan Informasi Bangunan"],
             "0102579150": ["ADE CANDRA PRATAMA", "Teknik Instalasi dan Tenaga Listrik"],
             "0102638809": ["ANNISA FITRI SEPTIA", "Teknik Komputer dan Jaringan"],
